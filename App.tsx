@@ -1,11 +1,10 @@
+import react, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-// import { initializeApp } from "firebase/app";
-// import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
-import firebase from "@firebase/app";
+import * as firebase from "@firebase/app";
 import firebaseConfig from "./firebaseConfig";
-console.log(firebase);
-if (firebase.getApps.length === 0) {
+
+if (firebase.getApps().length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 

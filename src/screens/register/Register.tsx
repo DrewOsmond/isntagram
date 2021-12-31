@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Text, Button, TextInput, NativeTouchEvent } from "react-native";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
-type onPressEvent = React.MouseEvent<HTMLButtonElement>;
+type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
+
+interface RegisterInfo {
+  email: string;
+  username: string;
+  password: string;
+}
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -11,23 +18,15 @@ export default function Register() {
 
   const handleSignup = (e: onPressEvent) => {
     e.preventDefault();
-    // const signupInfo = { password, username, email };
-    // if (email.length < 1 || username.length < 1 || password.length < 1) {
-    //   return setErrors(["username, email, or password must not be blank."]);
-    // }
-    // if (password !== confirmPassword) {
-    //   return setErrors(["passwords do not match"]);
-    // }
-    // if (
-    //   !email
-    //     .toLowerCase()
-    //     .match(
-    //       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    //     )
-    // ) {
-    //   return setErrors(["must use a valid email address"]);
-    // }
-    // dispatch(registerUser(signupInfo));
+    // const credentials: RegisterInfo = { email, username, password };
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredentials) => {
+        console.log(userCredentials);
+        // const user = userCredentials.user;
+        // console.log(user);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -62,7 +61,7 @@ export default function Register() {
         secureTextEntry={true}
       />
 
-      <Button title="Sign Up" onPress={() => "wee"} />
+      <Button title="Sign Up" onPress={(e) => handleSignup(e)} />
     </View>
   );
 }
