@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import { View, Text, Button, TextInput, NativeTouchEvent } from "react-native";
+import { View, Button, TextInput, NativeTouchEvent } from "react-native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
-
-interface RegisterInfo {
-  email: string;
-  username: string;
-  password: string;
-}
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -18,7 +12,6 @@ export default function Register() {
 
   const handleSignup = (e: onPressEvent) => {
     e.preventDefault();
-    // const credentials: RegisterInfo = { email, username, password };
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {

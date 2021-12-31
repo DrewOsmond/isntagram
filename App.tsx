@@ -10,7 +10,7 @@ if (firebase.getApps().length === 0) {
 
 import LandingScreen from "./src/screens/landing/Landing";
 import RegisterScreen from "./src/screens/register/Register";
-
+import LoginScreen from "./src/screens/login/Login";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
