@@ -1,14 +1,11 @@
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken";
 import bycrpt from "bcrypt";
 import { prisma } from "../app";
+import { signJWT } from "../util/auth";
 
 const emailPattern: RegExp = new RegExp(
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 );
-
-const secret: string = process.env.JWT_SECRET!;
-const inProduction: boolean = process.env.NODE_ENV === "prudction";
 
 export interface Post {
   id: number;
@@ -25,33 +22,14 @@ export interface User {
   posts: Post[];
 }
 
-const signJWT = (req: Request, res: Response) => {
-  const { user } = req.body;
-
-  const token = jwt.sign(
-    {
-      id: user.id,
-      username: user.username,
-    },
-    secret,
-    {
-      expiresIn: 1000 * 60 * 60 * 24 * 7 * 52,
-    }
-  );
-
-  res.cookie("token", token, {
-    httpOnly: true,
-    sameSite: inProduction && "lax",
-    secure: inProduction,
-    maxAge: 1000 * 60 * 60 * 24 * 7 * 52,
-  });
-};
-
 export const login = (req: Request, res: Response) => {};
 
-export const restore = (req: Request, res: Response) => {};
+export const restore = (req: Request, res: Response) => {
+  console.log(req);
+};
 
 export const register = async (req: Request, res: Response) => {
+  console.log(req.body);
   const { username, email, password } = req.body;
   if (!email.toLowerCase().match(emailPattern)) {
     res.status(400).json({ error: "must provide a valid email" });
@@ -76,7 +54,11 @@ export const register = async (req: Request, res: Response) => {
       .catch((error) => console.log(error));
 
     if (user) {
+      req.body.user = user;
+      signJWT(req, res);
       res.status(201).json(user);
     }
   }
 };
+
+console.log("");

@@ -1,10 +1,20 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const auth_1 = require("../controllers/auth");
+const user_1 = require("../controllers/user");
+const express_async_handler_1 = __importDefault(require("express-async-handler"));
 const router = (0, express_1.Router)();
-router.use("/restore", auth_1.restore);
-router.use("/login", auth_1.login);
-router.use("/register", auth_1.register);
+router.use("/restore", (0, express_async_handler_1.default)(async (req, res) => {
+    (0, user_1.restore)(req, res);
+}));
+router.use("/login", (0, express_async_handler_1.default)(async (req, res) => {
+    (0, user_1.login)(req, res);
+}));
+router.use("/register", (0, express_async_handler_1.default)(async (req, res) => {
+    (0, user_1.register)(req, res);
+}));
 exports.default = router;
 //# sourceMappingURL=users.js.map
