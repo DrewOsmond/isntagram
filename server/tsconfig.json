@@ -21,6 +21,6 @@
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "../index.ts"],
   "exclude": ["node_modules"]
 }
