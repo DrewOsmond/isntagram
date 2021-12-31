@@ -21,6 +21,15 @@ const saveToken = async (jwt: string) => {
   await SecureStore.setItemAsync("token", jwt);
 };
 
+const getToken = async () => {
+  const token = await SecureStore.getItemAsync("token");
+  if (token) {
+    return SecureStore;
+  } else {
+    return null;
+  }
+};
+
 const sessionSlice = createSlice({
   name: "session",
   initialState: {
@@ -52,6 +61,21 @@ export const registerUser = createAsyncThunk(
     return data;
   }
 );
+
+export const restoreUser = createAsyncThunk("session/restore", async () => {
+  const token = await getToken();
+  if (token) {
+    const { data } = await axios.post(
+      "http://localhost:4000/api/session/restore",
+      {
+        Headers: {
+          authorization: token,
+        },
+      }
+    );
+    return data;
+  }
+});
 
 export default sessionSlice.reducer;
 
