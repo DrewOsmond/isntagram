@@ -8,7 +8,7 @@ const express_async_handler_1 = __importDefault(require("express-async-handler")
 const auth_1 = require("../../util/auth");
 const posts_1 = require("../../controllers/posts");
 const router = (0, express_1.Router)();
-router.post("/create", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.createPost));
+router.post("/", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.createPost));
 router.patch("/post/:id", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.updatePost));
 router.delete("/post/:id", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.deletePost));
 //# sourceMappingURL=posts.js.map

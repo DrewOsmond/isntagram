@@ -10,8 +10,9 @@ import { restoreUser } from "./src/redux/reducers/session";
 import LandingScreen from "./src/screens/landing/Landing";
 import RegisterScreen from "./src/screens/register/Register";
 import LoginScreen from "./src/screens/login/Login";
-import { logoutUser } from "./src/redux/reducers/session";
-type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
+import HomeScreen from "./src/screens/home/Home";
+import NewPostScreen from "./src/screens/newPost/NewPost";
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -35,16 +36,16 @@ function AppNavigation() {
       .catch(() => setLoaded(true));
   }, []);
 
-  const handleLogout = (e: onPressEvent) => {
-    e.preventDefault();
-    dispatch(logoutUser());
-  };
-
   if (loaded && user) {
     return (
-      <View style={{ paddingTop: 250 }}>
-        <Button title="logout" onPress={(e) => handleLogout(e)} />
-      </View>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="New Post" component={NewPostScreen} />
+      </Stack.Navigator>
     );
   } else if (loaded && !user) {
     return (

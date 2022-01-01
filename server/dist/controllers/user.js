@@ -76,7 +76,6 @@ const restore = async (req, res) => {
 };
 exports.restore = restore;
 const register = async (req, res) => {
-    console.log(req.body);
     const { username, email, password } = req.body;
     if (!email.toLowerCase().match(emailPattern)) {
         res.status(400).json({ error: "must provide a valid email" });

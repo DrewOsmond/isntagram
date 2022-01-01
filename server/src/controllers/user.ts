@@ -93,7 +93,6 @@ export const restore = async (req: Request, res: Response) => {
 };
 
 export const register = async (req: Request, res: Response) => {
-  console.log(req.body);
   const { username, email, password } = req.body;
   if (!email.toLowerCase().match(emailPattern)) {
     res.status(400).json({ error: "must provide a valid email" });

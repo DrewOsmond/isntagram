@@ -29,7 +29,6 @@ interface ReduxUser {
 }
 
 const saveToken = async (jwt: string) => {
-  console.log("JWT", jwt);
   await SecureStore.setItemAsync("token", jwt);
 };
 
@@ -61,7 +60,6 @@ const sessionSlice = createSlice({
     });
 
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.user = action.payload;
       state.errors = false;
       state.loading = false;
@@ -87,19 +85,18 @@ export const registerUser = createAsyncThunk(
 
 export const restoreUser = createAsyncThunk("session/restore", async () => {
   const token = await SecureStore.getItemAsync("token");
-  // if (token) {
-  console.log(token);
-  const { data } = await axios.post(
-    "http://localhost:4000/api/session/restore",
-    {
-      Headers: {
-        authorization: token,
-      },
-    }
-  );
+  if (token) {
+    const { data } = await axios.post(
+      "http://localhost:4000/api/session/restore",
+      {
+        Headers: {
+          authorization: token,
+        },
+      }
+    );
 
-  return data;
-  // }
+    return data;
+  }
 });
 
 export const logoutUser = createAsyncThunk("session/logout", async () => {
