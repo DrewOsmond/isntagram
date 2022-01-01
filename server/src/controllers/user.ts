@@ -25,7 +25,7 @@ export interface User {
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
-  const user = await prisma.user.findFirst({
+  const user = await prisma.user.findUnique({
     where: {
       email,
     },
@@ -123,4 +123,9 @@ export const register = async (req: Request, res: Response) => {
       res.status(201).json(user);
     }
   }
+};
+
+export const logout = async (req: Request, res: Response) => {
+  res.clearCookie("token");
+  res.sendStatus(200);
 };

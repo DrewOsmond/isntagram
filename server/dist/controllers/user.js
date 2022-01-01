@@ -3,14 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = exports.restore = exports.login = void 0;
+exports.logout = exports.register = exports.restore = exports.login = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const app_1 = require("../app");
 const auth_1 = require("../util/auth");
 const emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 const login = async (req, res) => {
     const { email, password } = req.body;
-    const user = await app_1.prisma.user.findFirst({
+    const user = await app_1.prisma.user.findUnique({
         where: {
             email,
         },
@@ -107,4 +107,9 @@ const register = async (req, res) => {
     }
 };
 exports.register = register;
+const logout = async (req, res) => {
+    res.clearCookie("token");
+    res.sendStatus(200);
+};
+exports.logout = logout;
 //# sourceMappingURL=user.js.map

@@ -87,22 +87,25 @@ export const registerUser = createAsyncThunk(
 
 export const restoreUser = createAsyncThunk("session/restore", async () => {
   const token = await SecureStore.getItemAsync("token");
+  // if (token) {
   console.log(token);
-  if (token) {
-    const { data } = await axios.post(
-      "http://localhost:4000/api/session/restore",
-      {
-        Headers: {
-          authorization: token,
-        },
-      }
-    );
+  const { data } = await axios.post(
+    "http://localhost:4000/api/session/restore",
+    {
+      Headers: {
+        authorization: token,
+      },
+    }
+  );
 
-    return data;
-  }
+  return data;
+  // }
 });
 
 export const logoutUser = createAsyncThunk("session/logout", async () => {
+  const { data } = await axios.delete(
+    "http://localhost:4000/api/session/logout"
+  );
   await SecureStore.deleteItemAsync("token");
   return null;
 });
