@@ -107,7 +107,7 @@ const register = async (req, res) => {
     }
 };
 exports.register = register;
-const logout = async (req, res) => {
+const logout = async (_req, res) => {
     res.clearCookie("token");
     res.sendStatus(200);
 };

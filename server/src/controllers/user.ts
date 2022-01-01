@@ -125,7 +125,7 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const logout = async (req: Request, res: Response) => {
+export const logout = async (_req: Request, res: Response) => {
   res.clearCookie("token");
   res.sendStatus(200);
 };
