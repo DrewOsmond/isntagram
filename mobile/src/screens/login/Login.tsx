@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { View, TextInput, NativeTouchEvent, Button } from "react-native";
+import { useAppDispatch } from "../../redux/hooks";
+import { loginUser } from "../../redux/reducers/session";
 
 type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
 
 export default function Login() {
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e: onPressEvent) => {
     e.preventDefault();
+    dispatch(loginUser({ email, password }));
   };
 
   return (

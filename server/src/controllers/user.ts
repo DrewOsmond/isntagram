@@ -22,10 +22,74 @@ export interface User {
   posts: Post[];
 }
 
-export const login = (req: Request, res: Response) => {};
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
 
-export const restore = (req: Request, res: Response) => {
-  console.log(req);
+  const user = await prisma.user.findFirst({
+    where: {
+      email,
+    },
+    select: {
+      id: true,
+      username: true,
+      email: true,
+      picture: true,
+      password: true,
+      posts: {
+        select: {
+          id: true,
+          image: true,
+          content: true,
+          user: {
+            select: {
+              username: true,
+            },
+          },
+        },
+      },
+      Likes: true,
+    },
+  });
+
+  if (user && bycrpt.compareSync(password, user.password)) {
+    user.password = "";
+    req.body.user = user;
+    signJWT(req, res);
+    res.status(200).json(user);
+  } else {
+    res.status(401).json({ error: "email or password are incorrect" });
+  }
+};
+
+export const restore = async (req: Request, res: Response) => {
+  const { user } = req.body;
+
+  const userToSend = await prisma.user.findUnique({
+    where: {
+      email: user.email,
+    },
+    select: {
+      id: true,
+      username: true,
+      email: true,
+      picture: true,
+      posts: {
+        select: {
+          id: true,
+          image: true,
+          content: true,
+          user: {
+            select: {
+              username: true,
+            },
+          },
+        },
+      },
+      Likes: true,
+    },
+  });
+
+  res.status(200).json(userToSend);
 };
 
 export const register = async (req: Request, res: Response) => {
@@ -60,5 +124,3 @@ export const register = async (req: Request, res: Response) => {
     }
   }
 };
-
-console.log("");

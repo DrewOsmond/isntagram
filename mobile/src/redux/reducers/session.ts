@@ -17,17 +17,20 @@ interface User {
   password: string;
 }
 
-const saveToken = async (jwt: string) => {
-  await SecureStore.setItemAsync("token", jwt);
-};
+interface LoginInfo {
+  email: string;
+  password: string;
+}
 
-const getToken = async () => {
-  const token = await SecureStore.getItemAsync("token");
-  if (token) {
-    return SecureStore;
-  } else {
-    return null;
-  }
+interface ReduxUser {
+  user: User | null;
+  errors: boolean;
+  loading: boolean;
+}
+
+const saveToken = async (jwt: string) => {
+  console.log("JWT", jwt);
+  await SecureStore.setItemAsync("token", jwt);
 };
 
 const sessionSlice = createSlice({
@@ -36,11 +39,32 @@ const sessionSlice = createSlice({
     user: null,
     errors: false,
     loading: false,
-  },
+  } as ReduxUser,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(registerUser.fulfilled, (state, payload) => {
-      console.log("PAYLOADDDDL", payload);
+    builder.addCase(registerUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.errors = false;
+      state.loading = false;
+    });
+
+    builder.addCase(restoreUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.errors = false;
+      state.loading = false;
+    });
+
+    builder.addCase(logoutUser.fulfilled, (state, action) => {
+      state.user = null;
+      state.errors = false;
+      state.loading = false;
+    });
+
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.user = action.payload;
+      state.errors = false;
+      state.loading = false;
     });
   },
 });
@@ -56,14 +80,14 @@ export const registerUser = createAsyncThunk(
     const token = response.request.responseHeaders["Set-Cookie"]
       .split(";")[0]
       .slice(6);
-
     await saveToken(token);
     return data;
   }
 );
 
 export const restoreUser = createAsyncThunk("session/restore", async () => {
-  const token = await getToken();
+  const token = await SecureStore.getItemAsync("token");
+  console.log(token);
   if (token) {
     const { data } = await axios.post(
       "http://localhost:4000/api/session/restore",
@@ -73,20 +97,31 @@ export const restoreUser = createAsyncThunk("session/restore", async () => {
         },
       }
     );
+
     return data;
   }
 });
 
+export const logoutUser = createAsyncThunk("session/logout", async () => {
+  await SecureStore.deleteItemAsync("token");
+  return null;
+});
+
+export const loginUser = createAsyncThunk(
+  "session/login",
+  async (credentials: LoginInfo) => {
+    const response = await axios.post(
+      "http://localhost:4000/api/session/login",
+
+      credentials
+    );
+    const { data } = response;
+    const token = response.request.responseHeaders["Set-Cookie"]
+      .split(";")[0]
+      .slice(6);
+    await saveToken(token);
+    return data;
+  }
+);
+
 export default sessionSlice.reducer;
-
-// axios.request({
-//   method: 'POST',
-//   url: `http://localhost:4444/next/api`,
-//   headers: {
-//     'Authorization': token
-//   },
-//   data: {
-//     next_swastik: 'lets add something here'
-//   },
-
-// })

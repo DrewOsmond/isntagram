@@ -1,15 +1,17 @@
 import react, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Button, NativeTouchEvent } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useAppSelector, useAppDispatch } from "./src/redux/hooks";
 import { Provider } from "react-redux";
 import { store } from "./src/redux/store";
+import { restoreUser } from "./src/redux/reducers/session";
 
 import LandingScreen from "./src/screens/landing/Landing";
 import RegisterScreen from "./src/screens/register/Register";
 import LoginScreen from "./src/screens/login/Login";
-
+import { logoutUser } from "./src/redux/reducers/session";
+type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -27,10 +29,23 @@ function AppNavigation() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.session);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(restoreUser())
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(true));
+  }, []);
+
+  const handleLogout = (e: onPressEvent) => {
+    e.preventDefault();
+    dispatch(logoutUser());
+  };
 
   if (loaded && user) {
-    return <View></View>;
+    return (
+      <View style={{ paddingTop: 250 }}>
+        <Button title="logout" onPress={(e) => handleLogout(e)} />
+      </View>
+    );
   } else if (loaded && !user) {
     return (
       <Stack.Navigator initialRouteName="Landing">
