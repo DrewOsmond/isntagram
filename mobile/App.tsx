@@ -26,7 +26,7 @@ export default function App() {
 }
 
 function AppNavigation() {
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.session);
 
