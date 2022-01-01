@@ -19,6 +19,7 @@ export default function UploadImage({ image, setImage }: any) {
     });
 
     if (!result.cancelled) {
+      console.log(result);
       setImage(result.uri);
     }
   };
