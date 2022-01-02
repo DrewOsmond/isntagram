@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 
 interface NewPost {
-  image: string;
+  image: FormData;
   content: string;
+  username: string;
 }
 
 const postSlice = createSlice({
@@ -21,18 +23,25 @@ const postSlice = createSlice({
 
 export const createPost = createAsyncThunk(
   "posts/create",
-  async ({ image, content }: NewPost) => {
-    const formData = new FormData();
-    console.log(image);
-    // formData.append("name", "Image Upload");
-    formData.append("photo", image);
-    // formData.append("content", content);
+  async ({ image, content, username }: NewPost) => {
+    const token = await SecureStore.getItemAsync("token");
+    if (!token) return;
+
+    const form = new FormData();
+    form.append("photo", {
+      //@ts-ignore
+      name: `${username}-${new Date()}`,
+      uri: image,
+      type: `image/jpg`,
+    });
     const { data } = await axios.post(
       "http://localhost:4000/api/posts/upload",
-      formData,
+      form,
       {
         headers: {
+          Accept: "application/json",
           "Content-Type": "multipart/form-data",
+          authorization: token,
         },
       }
     );

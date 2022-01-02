@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Button, NativeTouchEvent } from "react-native";
 import { createPost } from "../../redux/reducers/post";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import UploadImage from "../../components/uploadImage/UploadImage";
 
 type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
 
 export default function NewPost() {
   const dispatch = useAppDispatch();
-  const [image, setImage] = useState(null);
+  const { user } = useAppSelector((state) => state.session);
+  const [image, setImage] = useState<FormData | null>(null);
 
   const handleNewPost = (e: onPressEvent) => {
     e.preventDefault();
-    if (!image) return;
-    dispatch(createPost({ image, content: "test" }));
+    if (!image || !user) return;
+    dispatch(createPost({ image, content: "test", username: user?.username }));
   };
 
   return (

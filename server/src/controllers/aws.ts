@@ -17,19 +17,11 @@ export const upload = multer({
   storage: multerS3({
     s3: s3,
     bucket: BUCKET_NAME,
-    metadata: function (req, file, cb) {
+    metadata: function (_req, file, cb) {
       cb(null, { fieldName: file.fieldname });
     },
-    key: function (req, file, cb) {
+    key: function (_req, _file, cb) {
       cb(null, Date.now().toString());
     },
   }),
 });
-
-// const params = {
-//   Bucket: BUCKET_NAME,
-//   CreateBucketConfiguration: {
-//     // Set your region here
-//     LocationConstraint: "us-west-1",
-//   },
-// };

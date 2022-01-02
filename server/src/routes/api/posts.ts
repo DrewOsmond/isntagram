@@ -11,10 +11,10 @@ router.patch("/post/:id", authenticateUser, expressAsyncHandler(updatePost));
 router.delete("/post/:id", authenticateUser, expressAsyncHandler(deletePost));
 router.post("/upload", upload.single("photo"), function (req, res, next) {
   //   console.log(req);
-  console.log(req.body);
+  console.log(req.file);
   res.send({
-    data: req.files,
-    msg: "Successfully uploaded " + req.files + " files!",
+    data: req.file,
+    msg: "Successfully uploaded " + req.file + " files!",
   });
 });
 

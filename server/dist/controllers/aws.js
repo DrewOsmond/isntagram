@@ -19,10 +19,10 @@ exports.upload = (0, multer_1.default)({
     storage: (0, multer_s3_1.default)({
         s3: s3,
         bucket: BUCKET_NAME,
-        metadata: function (req, file, cb) {
+        metadata: function (_req, file, cb) {
             cb(null, { fieldName: file.fieldname });
         },
-        key: function (req, file, cb) {
+        key: function (_req, _file, cb) {
             cb(null, Date.now().toString());
         },
     }),

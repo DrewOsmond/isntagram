@@ -8,8 +8,10 @@ import {
   StyleSheet,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { useAppSelector } from "../../redux/hooks";
 
 export default function UploadImage({ image, setImage }: any) {
+  const { user } = useAppSelector((state) => state.session);
   const addImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -19,7 +21,14 @@ export default function UploadImage({ image, setImage }: any) {
     });
 
     if (!result.cancelled) {
-      console.log(result);
+      // const form = new FormData();
+      // form.append("photo", {
+      //   //@ts-ignore
+      //   name: `${user?.username}-${new Date()}`,
+      //   uri: result.uri,
+      //   type: `image/jpg`,
+      // });
+
       setImage(result.uri);
     }
   };
