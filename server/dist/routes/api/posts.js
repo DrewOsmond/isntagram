@@ -12,7 +12,7 @@ const router = (0, express_1.Router)();
 router.post("/", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.createPost));
 router.patch("/:id", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.updatePost));
 router.delete("/:id", auth_1.authenticateUser, (0, express_async_handler_1.default)(posts_1.deletePost));
-router.post("/upload", auth_1.authenticateUser, aws_1.upload.single("photo"), function (req, res, next) {
+router.post("/upload", auth_1.authenticateUser, aws_1.upload.single("photo"), function (req, res) {
     res.status(201).json(req.file);
 });
 exports.default = router;

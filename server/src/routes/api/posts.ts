@@ -15,7 +15,7 @@ router.post(
   "/upload",
   authenticateUser,
   upload.single("photo"),
-  function (req, res, next) {
+  function (req, res) {
     res.status(201).json(req.file);
   }
 );
