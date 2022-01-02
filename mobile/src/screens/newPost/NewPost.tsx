@@ -9,7 +9,7 @@ type onPressEvent = React.BaseSyntheticEvent<NativeTouchEvent>;
 export default function NewPost() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.session);
-  const [image, setImage] = useState<FormData | null>(null);
+  const [image, setImage] = useState<string | null>(null);
 
   const handleNewPost = (e: onPressEvent) => {
     e.preventDefault();

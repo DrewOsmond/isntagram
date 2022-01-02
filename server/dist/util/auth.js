@@ -40,6 +40,7 @@ const authenticateUser = async (req, res, next) => {
             }
             else {
                 const { id, username, email } = payload;
+                req.user = { id, username, email };
                 req.body.user = { id, username, email };
                 return next();
             }

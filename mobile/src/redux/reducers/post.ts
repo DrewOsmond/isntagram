@@ -3,7 +3,7 @@ import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 
 interface NewPost {
-  image: FormData;
+  image: string;
   content: string;
   username: string;
 }
@@ -34,6 +34,7 @@ export const createPost = createAsyncThunk(
       uri: image,
       type: `image/jpg`,
     });
+    // form.append("content", content);
     const { data } = await axios.post(
       "http://localhost:4000/api/posts/upload",
       form,
@@ -46,7 +47,14 @@ export const createPost = createAsyncThunk(
       }
     );
 
-    console.log(data);
+    const { location } = data;
+
+    const response = await axios.post("http://localhost:4000/api/posts/", {
+      content,
+      image: location,
+    });
+
+    console.log(response.data);
   }
 );
 

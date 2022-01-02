@@ -19,6 +19,7 @@ exports.upload = (0, multer_1.default)({
     storage: (0, multer_s3_1.default)({
         s3: s3,
         bucket: BUCKET_NAME,
+        acl: "public-read-write",
         metadata: function (_req, file, cb) {
             cb(null, { fieldName: file.fieldname });
         },

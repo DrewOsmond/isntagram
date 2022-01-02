@@ -22,6 +22,38 @@ export interface User {
   posts: Post[];
 }
 
+export const register = async (req: Request, res: Response) => {
+  const { username, email, password } = req.body;
+  if (!email.toLowerCase().match(emailPattern)) {
+    res.status(400).json({ error: "must provide a valid email" });
+  } else {
+    const hashedPassword = await bycrpt.hash(password, 12);
+
+    const user: User | void = await prisma.user
+      .create({
+        data: {
+          username: username.toLowerCase(),
+          email: email.toLowerCase(),
+          password: hashedPassword,
+        },
+        select: {
+          id: true,
+          username: true,
+          email: true,
+          picture: true,
+          posts: true,
+        },
+      })
+      .catch((error) => console.log(error));
+
+    if (user) {
+      req.body.user = user;
+      signJWT(req, res);
+      res.status(201).json(user);
+    }
+  }
+};
+
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -90,38 +122,6 @@ export const restore = async (req: Request, res: Response) => {
   });
 
   res.status(200).json(userToSend);
-};
-
-export const register = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
-  if (!email.toLowerCase().match(emailPattern)) {
-    res.status(400).json({ error: "must provide a valid email" });
-  } else {
-    const hashedPassword = await bycrpt.hash(password, 12);
-
-    const user: User | void = await prisma.user
-      .create({
-        data: {
-          username: username.toLowerCase(),
-          email: email.toLowerCase(),
-          password: hashedPassword,
-        },
-        select: {
-          id: true,
-          username: true,
-          email: true,
-          picture: true,
-          posts: true,
-        },
-      })
-      .catch((error) => console.log(error));
-
-    if (user) {
-      req.body.user = user;
-      signJWT(req, res);
-      res.status(201).json(user);
-    }
-  }
 };
 
 export const logout = async (_req: Request, res: Response) => {

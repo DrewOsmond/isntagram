@@ -36,7 +36,12 @@ export default function UploadImage({ image, setImage }: any) {
   return (
     <View style={imageUploaderStyles.container}>
       {image && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        <Image
+          source={{
+            uri: image,
+          }}
+          style={{ width: 200, height: 200 }}
+        />
       )}
 
       <View style={imageUploaderStyles.uploadBtnContainer}>

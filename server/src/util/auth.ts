@@ -45,6 +45,8 @@ export const authenticateUser = async (
         });
       } else {
         const { id, username, email } = payload;
+        //@ts-ignore
+        req.user = { id, username, email };
         req.body.user = { id, username, email };
         return next();
       }
