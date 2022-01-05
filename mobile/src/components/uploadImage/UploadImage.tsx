@@ -21,14 +21,6 @@ export default function UploadImage({ image, setImage }: any) {
     });
 
     if (!result.cancelled) {
-      // const form = new FormData();
-      // form.append("photo", {
-      //   //@ts-ignore
-      //   name: `${user?.username}-${new Date()}`,
-      //   uri: result.uri,
-      //   type: `image/jpg`,
-      // });
-
       setImage(result.uri);
     }
   };

@@ -10,6 +10,7 @@ export default function NewPost() {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.session);
   const [image, setImage] = useState<string | null>(null);
+  const [postText, setPostText] = useState("");
 
   const handleNewPost = (e: onPressEvent) => {
     e.preventDefault();
