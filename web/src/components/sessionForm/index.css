@@ -1,0 +1,59 @@
+.session__page {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  flex-direction: column;
+}
+
+.session__form {
+  background-color: white;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #dcdbdc;
+}
+
+.session__form.login {
+  height: 400px;
+  margin-top: 90px;
+}
+
+.session__form.signup {
+  height: 450px;
+  margin-top: 45px;
+}
+
+.signup__info {
+  color: #7c7c7c;
+  font-weight: bold;
+  font-size: 17px;
+  justify-self: center;
+  text-align: center;
+  margin: 8px 30px 16px 30px;
+}
+
+.app__logo {
+  margin-top: 20px;
+}
+
+.session__form__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.session__form__input {
+  width: 250px;
+  height: 30px;
+  margin-bottom: 8px;
+}
+
+.session__form__button {
+  margin-top: 16px;
+  background-color: #0095f6;
+  color: #ffffff;
+  width: 258px;
+  height: 36px;
+  border-radius: 2px;
+}

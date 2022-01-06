@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { loginUser } from "../../redux/reducers/session";
+import SessionForm from "../../components/sessionForm/SessionForm";
 
 type ReactFormEvent = React.BaseSyntheticEvent;
 
@@ -21,30 +22,35 @@ const Login = () => {
     dispatch(loginUser({ email, password }));
   };
 
-  return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <label htmlFor="email">email</label>
+  const form = (
+    <>
+      <div className="signup__info">
+        Login to see photos and videos from your friends.
+      </div>
+      <form className={"session__form__container"} onSubmit={handleLogin}>
         <input
-          id="email"
+          className="session__form__input"
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">password</label>
         <input
-          id="password"
+          className="session__form__input"
           type="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="submit">login</button>
+        <button className="session__form__button" type="submit">
+          login
+        </button>
       </form>
-    </div>
+    </>
   );
+
+  return <SessionForm formInput={form} typeofForm="login" />;
 };
 
 export default Login;

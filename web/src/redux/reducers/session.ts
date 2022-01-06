@@ -48,7 +48,7 @@ const sessionSlice = createSlice({
       state.loading = false;
     });
 
-    builder.addCase(logoutUser.fulfilled, (state, action) => {
+    builder.addCase(logoutUser.fulfilled, (state, _action) => {
       state.user = null;
       state.errors = false;
       state.loading = false;
