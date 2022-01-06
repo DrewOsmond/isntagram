@@ -10,21 +10,29 @@ A totally not clone of instagram, isntagram is a social platform that allows you
 
 ## Languages and tools
 
-<p <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/npm/npm-original-wordmark.svg" width="40" height="40"/> </a>  <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a>
+<p>
+  <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/typescript/typescript-plain.svg" alt="typescript" width="40" height="40"/> </a> 
+  <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/react/react-original.svg" alt="reactjs" width="40" height="40"/> </a>
+  <a href="https://redux.js.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/> </a>
+  <a href="https://expressjs.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/express/express-original-wordmark.svg" alt="postgreSQL" width="40" height="40"/> </a>
+  <a href="https://www.npmjs.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/npm/npm-original-wordmark.svg" alt="npm" width="40" height="40"/> </a>
+  <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a> 
  </p>
 
 ## Features
+
 - [Feature list](https://github.com/DrewOsmond/bixel/wiki/Features)
 
 ## Documentation
+
 - [User Stories](https://github.com/DrewOsmond/bixel/wiki/User-Stories)
 
 ## Development
 
 ### What you'll need on your machine:
 
-  * Node
-  * Npm
+- Node
+- Npm
 
 1. `Git clone` this repo.
 
@@ -35,6 +43,7 @@ A totally not clone of instagram, isntagram is a social platform that allows you
 4. `Npm run watch` to run the typescript watch command, this will auto compile your TS on save.
 
 ### Running web
+
 1. `Cd` into the web directory and run `npm isntall` in the terminal to install dependencies.
 2. `npm start` to start the web app.
 
@@ -47,11 +56,15 @@ A totally not clone of instagram, isntagram is a social platform that allows you
 3. --continue after deploying--
 
 ## Challenges
+
 ### Creating layers on the canvas that persist refreshes.
+
 ### Locally persisting all changes to the canvases, drawing, name changing, adding layers, canvas strokes, etc.
+
 ### Making the canvas produce smooth and concise strokes.
 
-## Screenshots 
+## Screenshots
+
 <img width="1440" alt="Screen Shot 2021-11-23 at 11 19 14 PM" src="https://user-images.githubusercontent.com/47048517/143197740-bc72b9c6-fb9e-4340-a3ba-77fc406e4dd1.png">
 <img width="1440" alt="Screen Shot 2021-11-23 at 11 21 14 PM" src="https://user-images.githubusercontent.com/47048517/143197750-fd27ba5a-ef04-468f-9fe2-ee008f9dc59c.png">
 <img width="1440" alt="Screen Shot 2021-11-23 at 11 21 53 PM" src="https://user-images.githubusercontent.com/47048517/143197755-a27435bc-d0c3-4a00-b8df-1693d715542a.png">
