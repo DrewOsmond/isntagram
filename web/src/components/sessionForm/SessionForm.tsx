@@ -21,7 +21,7 @@ const SessionForm: FC<Props> = ({ formInput, typeofForm }) => {
         {formInput}
       </div>
 
-      <div>
+      <div className="session__button__container">
         {redirectButtonPrefix}{" "}
         <button className="session__button" onClick={() => navigate(redirect)}>
           {redirectButtonTitle}

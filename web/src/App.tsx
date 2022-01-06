@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     dispatch(restoreUser()).then(() => setLoaded(true));
-  }, []);
+  }, [dispatch]);
 
   if (!user && loaded) {
     return (

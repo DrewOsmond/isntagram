@@ -25,7 +25,7 @@ const Login = () => {
   const form = (
     <>
       <div className="signup__info">
-        Login to see photos and videos from your friends.
+        Log in to see photos and videos from your friends.
       </div>
       <form className={"session__form__container"} onSubmit={handleLogin}>
         <input

@@ -34,7 +34,7 @@
 }
 
 .app__logo {
-  margin-top: 20px;
+  margin-top: 32px;
 }
 
 .session__form__container {
@@ -56,4 +56,21 @@
   width: 258px;
   height: 36px;
   border-radius: 2px;
+}
+
+.session__button__container {
+  margin-top: 8px;
+  width: 350px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #262726;
+  background-color: white;
+  border: 1px solid #dcdbdc;
+}
+
+.session__button {
+  margin-left: 8px;
+  color: #0195f6;
 }
