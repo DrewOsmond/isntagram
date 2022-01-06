@@ -1,4 +1,4 @@
-![logo](https://user-images.githubusercontent.com/47048517/142943815-64f3d854-34e6-423a-b76b-03661bb17b81.png)
+![logo](https://i.imgur.com/gkoiKBH.png)
 
 ## Introduction
 
