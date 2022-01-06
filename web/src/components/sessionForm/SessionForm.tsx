@@ -12,7 +12,7 @@ const SessionForm: FC<Props> = ({ formInput, typeofForm }) => {
   const redirectButtonPrefix =
     typeofForm === "login" ? "Don't have an account?" : "Have an account?";
   const redirectButtonTitle = typeofForm === "login" ? "Sign up" : "Login";
-  const redirect = typeofForm === "login" ? "/sign-up" : "/login";
+  const redirect = typeofForm === "login" ? "/sign-up" : "/";
 
   return (
     <div className="session__page">

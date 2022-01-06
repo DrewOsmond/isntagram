@@ -12,7 +12,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<string[]>([]);
-
+  console.log(errors);
   const handleSignup = (e: ReactFormEvent) => {
     e.preventDefault();
     const emailPattern: RegExp = new RegExp(

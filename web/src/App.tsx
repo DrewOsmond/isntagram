@@ -5,6 +5,8 @@ import { restoreUser } from "./redux/reducers/session";
 
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import Home from "./pages/home/Home";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -18,14 +20,17 @@ function App() {
   if (!user && loaded) {
     return (
       <Routes>
-        <Route path="/login" element={<Login />} />;
+        <Route path="/" element={<Login />} />;
         <Route path="/sign-up" element={<Signup />} />
       </Routes>
     );
   } else if (user) {
     return (
       <>
-        <div>howdee</div>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </>
     );
   } else {
