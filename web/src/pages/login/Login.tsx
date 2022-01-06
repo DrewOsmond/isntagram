@@ -29,11 +29,12 @@ const Login = () => {
       </div>
       <form className={"session__form__container"} onSubmit={handleLogin}>
         <input
-          className="session__form__input"
+          className="session__form__input inputText"
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           className="session__form__input"
@@ -41,10 +42,11 @@ const Login = () => {
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
 
         <button className="session__form__button" type="submit">
-          login
+          Log in
         </button>
       </form>
     </>

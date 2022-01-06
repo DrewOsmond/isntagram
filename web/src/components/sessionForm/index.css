@@ -34,7 +34,9 @@
 }
 
 .app__logo {
-  margin-top: 32px;
+  margin-top: 16px;
+  font-size: 56px;
+  font-family: "Dancing Script", cursive;
 }
 
 .session__form__container {
@@ -47,13 +49,16 @@
   width: 250px;
   height: 30px;
   margin-bottom: 8px;
+  border: 1px solid #dadbdb;
+  border-radius: 2px;
+  padding-left: 8px;
 }
 
 .session__form__button {
   margin-top: 16px;
   background-color: #0095f6;
   color: #ffffff;
-  width: 258px;
+  width: 260px;
   height: 36px;
   border-radius: 2px;
 }
@@ -68,6 +73,7 @@
   color: #262726;
   background-color: white;
   border: 1px solid #dcdbdc;
+  border-radius: 2px;
 }
 
 .session__button {

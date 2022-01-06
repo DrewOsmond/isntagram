@@ -38,7 +38,7 @@ const Signup = () => {
   const form = (
     <>
       <div className="signup__info">
-        Sign up to see photos and videos from your friends.
+        <div>Sign up to see photos and videos from your friends.</div>
       </div>
       <form className="session__form__container" onSubmit={handleSignup}>
         <input
