@@ -7,6 +7,43 @@ interface NewPost {
   username: string;
 }
 
+interface Post {
+  id: number;
+  user: {
+    username: string;
+    profile_picture: string;
+  };
+  content: string;
+  image: string;
+  likes: [];
+  comments: [];
+}
+
+const mockData: Post[] = [
+  {
+    id: 1,
+    user: {
+      username: "drew",
+      profile_picture: "",
+    },
+    content: "look at this kewl eemage",
+    image: "https://i.imgur.com/hqljdBy.jpeg",
+    likes: [],
+    comments: [],
+  },
+  {
+    id: 2,
+    user: {
+      username: "bleh123",
+      profile_picture: "",
+    },
+    content: "roflmao",
+    image: "https://i.imgur.com/5H8eLQV.jpeg",
+    likes: [],
+    comments: [],
+  },
+];
+
 const postSlice = createSlice({
   name: "posts",
   initialState: {
