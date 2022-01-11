@@ -50,14 +50,14 @@
   margin-right: 100px;
 }
 
-.fas {
+.navbar__icon {
   font-size: 26px;
   transition: 0.3s;
   margin-right: 24px;
   color: black;
 }
 
-.fas:hover {
+.navbar__.navbar__icon {
   font-size: 26.8px;
   transition: 0.3s;
 }

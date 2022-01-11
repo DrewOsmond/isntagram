@@ -11,7 +11,7 @@ interface Post {
   id: number;
   user: {
     username: string;
-    profile_picture: string;
+    profile_picture: string | null;
   };
   content: string;
   image: string;
@@ -24,7 +24,8 @@ const mockData: Post[] = [
     id: 1,
     user: {
       username: "drew",
-      profile_picture: "",
+      profile_picture:
+        "https://pbs.twimg.com/profile_images/1292946523102121984/eSVCfcdc_400x400.jpg",
     },
     content: "look at this kewl eemage",
     image: "https://i.imgur.com/hqljdBy.jpeg",
@@ -35,10 +36,22 @@ const mockData: Post[] = [
     id: 2,
     user: {
       username: "bleh123",
-      profile_picture: "",
+      profile_picture:
+        "https://pbs.twimg.com/profile_images/1178631635606151168/yIlrcg4o_400x400.jpg",
     },
     content: "roflmao",
     image: "https://i.imgur.com/5H8eLQV.jpeg",
+    likes: [],
+    comments: [],
+  },
+  {
+    id: 3,
+    user: {
+      username: "wee-wee",
+      profile_picture: null,
+    },
+    content: "loooooool so funny",
+    image: "https://i.imgur.com/dMT5DSe.jpeg",
     likes: [],
     comments: [],
   },
@@ -47,7 +60,8 @@ const mockData: Post[] = [
 const postSlice = createSlice({
   name: "posts",
   initialState: {
-    posts: [],
+    posts: mockData,
+    loaded: true,
   },
   reducers: {},
   extraReducers: (builder) => {

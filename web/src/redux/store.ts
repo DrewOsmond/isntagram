@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import SessionReducer from "./reducers/session";
-import PostReducer from "./reducers/post";
+import PostReducer from "./reducers/posts";
 
 export const store = configureStore({
   reducer: {
     session: SessionReducer,
-    post: PostReducer,
+    posts: PostReducer,
   },
 });
 

@@ -14,16 +14,16 @@ const Navbar = () => {
 
       <div className="navbar__icons">
         <Link to="/">
-          <i className="fas fa-home" />
+          <i className="fas fa-home navbar__icon" />
         </Link>
         <Link to="/new-post">
-          <i className="fas fa-plus-square" />
+          <i className="fas fa-plus-square navbar__icon" />
         </Link>
         <Link to="/explore">
-          <i className="fas fa-compass" />
+          <i className="fas fa-compass navbar__icon" />
         </Link>
         <Link to={`/${user?.username}`}>
-          <i className="fas fa-user-circle" />
+          <i className="fas fa-user-circle navbar__icon" />
         </Link>
       </div>
     </nav>
