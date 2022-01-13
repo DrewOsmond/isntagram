@@ -1,31 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// interface Config {
-//   body: {
-//     [key: string]: any;
-//   };
-//   headers: {
-//     [key: string]: string;
-//   };
-// }
-
-interface User {
-  username: string;
-  email: string;
-  password: string;
-}
-
-interface LoginInfo {
-  email: string;
-  password: string;
-}
-
-interface ReduxUser {
-  user: User | null;
-  errors: boolean;
-  loading: boolean;
-}
+import { User, LoginInfo, SessionUser } from "../../types";
 
 const sessionSlice = createSlice({
   name: "session",
@@ -33,7 +9,7 @@ const sessionSlice = createSlice({
     user: null,
     errors: false,
     loading: false,
-  } as ReduxUser,
+  } as SessionUser,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(registerUser.fulfilled, (state, action) => {

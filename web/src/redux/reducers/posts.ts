@@ -1,33 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
-interface NewPost {
-  image: string;
-  content: string;
-  username: string;
-}
-
-interface Post {
-  id: number;
-  user: {
-    username: string;
-    profile_picture: string | null;
-  };
-  content: string;
-  image: string;
-  likes: [];
-  comments: [];
-}
+import { NewPost, Post } from "../../types";
 
 const mockData: Post[] = [
   {
     id: 1,
     user: {
-      username: "drew",
+      username: "Drew",
       profile_picture:
         "https://pbs.twimg.com/profile_images/1292946523102121984/eSVCfcdc_400x400.jpg",
     },
-    content: "look at this kewl eemage",
+    content:
+      "Best version of the Mummy, Tom Cruise's version doesn't even come close.",
     image: "https://i.imgur.com/hqljdBy.jpeg",
     likes: [],
     comments: [],
@@ -35,11 +19,11 @@ const mockData: Post[] = [
   {
     id: 2,
     user: {
-      username: "bleh123",
+      username: "orange",
       profile_picture:
         "https://pbs.twimg.com/profile_images/1178631635606151168/yIlrcg4o_400x400.jpg",
     },
-    content: "roflmao",
+    content: "kinda funny not gonna lie",
     image: "https://i.imgur.com/5H8eLQV.jpeg",
     likes: [],
     comments: [],
@@ -47,7 +31,7 @@ const mockData: Post[] = [
   {
     id: 3,
     user: {
-      username: "wee-wee",
+      username: "pickle",
       profile_picture: null,
     },
     content: "loooooool so funny",

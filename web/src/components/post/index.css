@@ -1,13 +1,13 @@
-.post__container {
+.post {
   max-width: 550px;
   width: 95vw;
-  height: 700px;
+
   display: flex;
   flex-direction: column;
-  margin-bottom: 80px;
   background-color: white;
   border: 1px solid #dbdbdb;
   border-radius: 3px;
+  margin: 16px 0px;
 }
 
 .post__user {
@@ -36,9 +36,46 @@
   border: 1px solid black;
 }
 
+.post__username {
+  margin-left: 8px;
+}
+
 .post__image {
   width: 100%;
-  height: 700px;
+  height: 600px;
   border-bottom: 1px solid #dbdbdb;
   border-top: 1px solid #dbdbdb;
+}
+
+.post__content {
+}
+
+.post__likes__comments {
+  font-size: 21px;
+  padding: 14px 0px 0px 16px;
+}
+
+.post__unliked:hover {
+  cursor: pointer;
+}
+
+.post__unliked:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+.post__description {
+  margin: 8px 0px 8px 16px;
+}
+
+.post__content__username {
+  color: black;
+  text-decoration: none;
+  margin-right: 3px;
+  font-weight: bold;
+}
+
+.post__content__username:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
