@@ -35,7 +35,7 @@ A totally not clone of instagram, isntagram is a social platform that allows you
 
 ## Documentation
 
-- [User Stories](https://github.com/DrewOsmond/bixel/isntagram/User-Stories)
+- [User Stories](https://github.com/DrewOsmond/isntagram/wiki/user-stories)
 
 # Development
 
