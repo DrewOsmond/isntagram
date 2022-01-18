@@ -22,6 +22,45 @@ export interface User {
   posts: Post[];
 }
 
+export const getUser = async (req: Request, res: Response) => {
+  const { username } = req.params;
+
+  const user = await prisma.user
+    .findFirst({
+      where: {
+        username,
+      },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        picture: true,
+        posts: true,
+        followedBy: {
+          select: {
+            following: {
+              select: {
+                username: true,
+              },
+            },
+          },
+        },
+        following: {
+          select: {
+            follower: {
+              select: {
+                username: true,
+              },
+            },
+          },
+        },
+      },
+    })
+    .catch(console.log);
+
+  res.status(200).json(user);
+};
+
 export const register = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
   if (!email.toLowerCase().match(emailPattern)) {

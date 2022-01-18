@@ -3,11 +3,48 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logout = exports.restore = exports.login = exports.register = void 0;
+exports.logout = exports.restore = exports.login = exports.register = exports.getUser = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const app_1 = require("../app");
 const auth_1 = require("../util/auth");
 const emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+const getUser = async (req, res) => {
+    const { username } = req.params;
+    const user = await app_1.prisma.user
+        .findFirst({
+        where: {
+            username,
+        },
+        select: {
+            id: true,
+            username: true,
+            email: true,
+            picture: true,
+            posts: true,
+            followedBy: {
+                select: {
+                    following: {
+                        select: {
+                            username: true,
+                        },
+                    },
+                },
+            },
+            following: {
+                select: {
+                    follower: {
+                        select: {
+                            username: true,
+                        },
+                    },
+                },
+            },
+        },
+    })
+        .catch(console.log);
+    res.status(200).json(user);
+};
+exports.getUser = getUser;
 const register = async (req, res) => {
     const { username, email, password } = req.body;
     if (!email.toLowerCase().match(emailPattern)) {
