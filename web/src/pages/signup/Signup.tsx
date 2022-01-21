@@ -3,6 +3,8 @@ import { useAppDispatch } from "../../redux/hooks";
 import { registerUser } from "../../redux/reducers/session";
 import SessionForm from "../../components/sessionForm/SessionForm";
 
+import FormInput from "../../components/styled/FormInput.style";
+
 type ReactFormEvent = React.BaseSyntheticEvent;
 
 const Signup = () => {
@@ -43,29 +45,25 @@ const Signup = () => {
         <div>Sign up to see photos and videos from your friends.</div>
       </div>
       <form className="session__form__container" onSubmit={handleSignup}>
-        <input
-          className="session__form__input"
+        <FormInput
           type="text"
           placeholder="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <input
-          className="session__form__input"
+        <FormInput
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          className="session__form__input"
+        <FormInput
           type="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input
-          className="session__form__input"
+        <FormInput
           type="password"
           placeholder="confirm password"
           value={confirmPassword}
