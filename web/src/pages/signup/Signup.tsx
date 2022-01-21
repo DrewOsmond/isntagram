@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { registerUser } from "../../redux/reducers/session";
 import SessionForm from "../../components/sessionForm/SessionForm";
-
-import FormInput from "../../components/styled/FormInput.style";
+import FormInput from "../../components/styled/SessionForm/Input.style";
+import FormContainer from "../../components/styled/SessionForm/Form.style";
+import Button from "../../components/styled/SessionForm/Button.style";
+import FormInfo from "../../components/styled/SessionForm/FormInfo.style";
 
 type ReactFormEvent = React.BaseSyntheticEvent;
 
@@ -41,10 +43,8 @@ const Signup = () => {
 
   return (
     <SessionForm typeofForm="signup">
-      <div className="signup__info">
-        <div>Sign up to see photos and videos from your friends.</div>
-      </div>
-      <form className="session__form__container" onSubmit={handleSignup}>
+      <FormInfo>Sign up to see photos and videos from your friends.</FormInfo>
+      <FormContainer onSubmit={handleSignup}>
         <FormInput
           type="text"
           placeholder="username"
@@ -69,11 +69,8 @@ const Signup = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-
-        <button className="session__form__button" type="submit">
-          sign up
-        </button>
-      </form>
+        <Button type="submit">sign up</Button>
+      </FormContainer>
     </SessionForm>
   );
 };

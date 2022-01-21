@@ -24,43 +24,19 @@
   margin-top: 45px;
 }
 
-.signup__info {
+/* .signup__info {
   color: #7c7c7c;
   font-weight: bold;
   font-size: 17px;
   justify-self: center;
   text-align: center;
   margin: 8px 30px 8px 30px;
-}
+} */
 
 .app__logo {
   margin-top: 16px;
   font-size: 56px;
   font-family: "Dancing Script", cursive;
-}
-
-.session__form__container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 32px;
-}
-
-.session__form__input {
-  width: 250px;
-  height: 30px;
-  margin-bottom: 8px;
-  border: 1px solid #dadbdb;
-  border-radius: 2px;
-  padding-left: 8px;
-}
-
-.session__form__button {
-  margin-top: 16px;
-  background-color: #0095f6;
-  color: #ffffff;
-  width: 260px;
-  height: 36px;
-  border-radius: 2px;
 }
 
 .session__button__container {

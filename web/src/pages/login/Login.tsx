@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { loginUser } from "../../redux/reducers/session";
 import SessionForm from "../../components/sessionForm/SessionForm";
+import FormContainer from "../../components/styled/SessionForm/Form.style";
+import FormInput from "../../components/styled/SessionForm/Input.style";
+import Button from "../../components/styled/SessionForm/Button.style";
+import FormInfo from "../../components/styled/SessionForm/FormInfo.style";
 
 type ReactFormEvent = React.BaseSyntheticEvent;
 
@@ -24,20 +28,16 @@ const Login = () => {
 
   return (
     <SessionForm typeofForm="login">
-      <div className="signup__info">
-        Log in to see photos and videos from your friends.
-      </div>
-      <form className={"session__form__container"} onSubmit={handleLogin}>
-        <input
-          className="session__form__input inputText"
+      <FormInfo>Log in to see photos and videos from your friends.</FormInfo>
+      <FormContainer onSubmit={handleLogin}>
+        <FormInput
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
-          className="session__form__input"
+        <FormInput
           type="password"
           placeholder="password"
           value={password}
@@ -45,10 +45,8 @@ const Login = () => {
           required
         />
 
-        <button className="session__form__button" type="submit">
-          Log in
-        </button>
-      </form>
+        <Button type="submit">Log in</Button>
+      </FormContainer>
     </SessionForm>
   );
 };
