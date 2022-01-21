@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { NewPost, Post } from "../../types";
 
-const mockData: Post[] = [
+export const mockData: Post[] = [
   {
     id: 1,
     user: {
@@ -45,7 +45,7 @@ const postSlice = createSlice({
   name: "posts",
   initialState: {
     posts: mockData,
-    loaded: true,
+    loaded: false,
   },
   reducers: {},
   extraReducers: (builder) => {

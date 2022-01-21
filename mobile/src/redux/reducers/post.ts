@@ -36,7 +36,7 @@ export const createPost = createAsyncThunk(
     });
     // form.append("content", content);
     const { data } = await axios.post(
-      "http://localhost:4000/api/posts/upload",
+      "http://localhost:4000/api/posts/upload/",
       form,
       {
         headers: {

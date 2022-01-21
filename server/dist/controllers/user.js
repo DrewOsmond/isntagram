@@ -42,7 +42,12 @@ const getUser = async (req, res) => {
         },
     })
         .catch(console.log);
-    res.status(200).json(user);
+    if (!user) {
+        res.sendStatus(404);
+    }
+    else {
+        res.status(200).json(user);
+    }
 };
 exports.getUser = getUser;
 const register = async (req, res) => {

@@ -7,7 +7,20 @@ export interface User {
   username: string;
   email: string;
   password: string;
+  picture: string;
   Likes: Likes[];
+}
+
+export interface UserProfile {
+  username: string;
+  email: string;
+  password: string;
+  picture: string;
+  likes: Likes[];
+  posts: Post[];
+  followedBy: [];
+  following: [];
+  error?: string;
 }
 
 export interface LoginInfo {

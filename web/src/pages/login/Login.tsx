@@ -22,8 +22,8 @@ const Login = () => {
     dispatch(loginUser({ email, password }));
   };
 
-  const form = (
-    <>
+  return (
+    <SessionForm typeofForm="login">
       <div className="signup__info">
         Log in to see photos and videos from your friends.
       </div>
@@ -49,10 +49,8 @@ const Login = () => {
           Log in
         </button>
       </form>
-    </>
+    </SessionForm>
   );
-
-  return <SessionForm formInput={form} typeofForm="login" />;
 };
 
 export default Login;

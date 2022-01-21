@@ -13,6 +13,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState<string[]>([]);
   console.log(errors);
+
   const handleSignup = (e: ReactFormEvent) => {
     e.preventDefault();
     const emailPattern: RegExp = new RegExp(
@@ -30,13 +31,14 @@ const Signup = () => {
     if (potentialErrors.length) {
       return setErrors(potentialErrors);
     } else {
+      //@ts-ignore
       dispatch(registerUser({ username, email, password }));
       setErrors([]);
     }
   };
 
-  const form = (
-    <>
+  return (
+    <SessionForm typeofForm="signup">
       <div className="signup__info">
         <div>Sign up to see photos and videos from your friends.</div>
       </div>
@@ -74,10 +76,8 @@ const Signup = () => {
           sign up
         </button>
       </form>
-    </>
+    </SessionForm>
   );
-
-  return <SessionForm formInput={form} typeofForm="signup" />;
 };
 
 export default Signup;

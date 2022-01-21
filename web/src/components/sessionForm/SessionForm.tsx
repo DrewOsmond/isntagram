@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 interface Props {
-  formInput: JSX.Element;
   typeofForm: string;
 }
 
-const SessionForm: FC<Props> = ({ formInput, typeofForm }) => {
+const SessionForm: FC<Props> = ({ children, typeofForm }) => {
   const navigate = useNavigate();
   const redirectButtonPrefix =
     typeofForm === "login" ? "Don't have an account?" : "Have an account?";
@@ -18,7 +17,7 @@ const SessionForm: FC<Props> = ({ formInput, typeofForm }) => {
     <div className="session__page">
       <div className={"session__form " + typeofForm}>
         <h1 className="app__logo">Isntagram</h1>
-        {formInput}
+        {children}
       </div>
 
       <div className="session__button__container">

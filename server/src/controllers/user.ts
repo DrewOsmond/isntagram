@@ -58,7 +58,11 @@ export const getUser = async (req: Request, res: Response) => {
     })
     .catch(console.log);
 
-  res.status(200).json(user);
+  if (!user) {
+    res.sendStatus(404);
+  } else {
+    res.status(200).json(user);
+  }
 };
 
 export const register = async (req: Request, res: Response) => {
