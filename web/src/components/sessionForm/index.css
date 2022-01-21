@@ -1,20 +1,20 @@
-.session__page {
+/* .session__page {
   display: flex;
   width: 100vw;
   align-items: center;
   flex-direction: column;
-}
+} */
 
-.session__form {
+/* .session__form {
   background-color: white;
   width: 350px;
   display: flex;
   align-items: center;
   flex-direction: column;
   border: 1px solid #dcdbdc;
-}
+} */
 
-.session__form.login {
+/* .session__form.login {
   height: 400px;
   margin-top: 90px;
 }
@@ -22,24 +22,15 @@
 .session__form.signup {
   height: 450px;
   margin-top: 45px;
-}
-
-/* .signup__info {
-  color: #7c7c7c;
-  font-weight: bold;
-  font-size: 17px;
-  justify-self: center;
-  text-align: center;
-  margin: 8px 30px 8px 30px;
 } */
 
-.app__logo {
+/* .app__logo {
   margin-top: 16px;
   font-size: 56px;
   font-family: "Dancing Script", cursive;
-}
+} */
 
-.session__button__container {
+/* .session__button__container {
   margin-top: 8px;
   width: 350px;
   height: 70px;
@@ -50,9 +41,9 @@
   background-color: white;
   border: 1px solid #dcdbdc;
   border-radius: 2px;
-}
+} */
 
-.session__button {
+/* .session__button {
   margin-left: 8px;
   color: #0195f6;
-}
+} */

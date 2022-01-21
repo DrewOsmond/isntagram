@@ -4,7 +4,7 @@ import { loginUser } from "../../redux/reducers/session";
 import SessionForm from "../../components/sessionForm/SessionForm";
 import FormContainer from "../../components/styled/SessionForm/Form.style";
 import FormInput from "../../components/styled/SessionForm/Input.style";
-import Button from "../../components/styled/SessionForm/Button.style";
+import SubmitButton from "../../components/styled/SessionForm/SubmitButton.style";
 import FormInfo from "../../components/styled/SessionForm/FormInfo.style";
 
 type ReactFormEvent = React.BaseSyntheticEvent;
@@ -44,8 +44,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
-        <Button type="submit">Log in</Button>
+        <SubmitButton type="submit">Log in</SubmitButton>
       </FormContainer>
     </SessionForm>
   );

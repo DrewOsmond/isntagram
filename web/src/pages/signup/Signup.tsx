@@ -4,7 +4,7 @@ import { registerUser } from "../../redux/reducers/session";
 import SessionForm from "../../components/sessionForm/SessionForm";
 import FormInput from "../../components/styled/SessionForm/Input.style";
 import FormContainer from "../../components/styled/SessionForm/Form.style";
-import Button from "../../components/styled/SessionForm/Button.style";
+import SubmitButton from "../../components/styled/SessionForm/SubmitButton.style";
 import FormInfo from "../../components/styled/SessionForm/FormInfo.style";
 
 type ReactFormEvent = React.BaseSyntheticEvent;
@@ -69,7 +69,7 @@ const Signup = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <Button type="submit">sign up</Button>
+        <SubmitButton type="submit">sign up</SubmitButton>
       </FormContainer>
     </SessionForm>
   );
